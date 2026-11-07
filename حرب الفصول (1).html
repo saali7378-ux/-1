@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حرب الفصول</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#090D1F;--bg2:#121A33;--pu:#8B5CF6;--bl:#3B82F6;--or:#FF8A26;--gr:#22C55E;--rd:#EF4444;--tx:#EAF0FF;--mu:#9AA7CC;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:radial-gradient(circle at 20% 0,#1a1450 0,var(--bg) 45%) fixed var(--bg);color:var(--tx);font-family:"Cairo","Tajawal","Segoe UI",Tahoma,Arial,sans-serif;direction:rtl}
+button,input{font-family:inherit}
+#app{max-width:1200px;margin:0 auto;padding:18px}
+h2{margin:0}
+.scr{animation:in .45s ease}
+@keyframes in{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.logo{font-size:clamp(2.6rem,9vw,5.5rem);font-weight:900;text-align:center;line-height:1.3;background:linear-gradient(90deg,var(--pu),var(--bl),var(--or));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px #8B5CF688)}
+.sub{text-align:center;color:var(--mu);margin:6px 0 26px;font-size:1.15rem}
+.card{background:var(--bg2);border:1px solid #2a3560;border-radius:16px;padding:20px}
+.btn{font-weight:900;font-size:1.1rem;border:0;border-radius:12px;padding:10px 24px;color:#fff;background:linear-gradient(135deg,var(--pu),var(--bl));cursor:pointer;box-shadow:0 0 18px #8B5CF655;transition:transform .12s}
+.btn:hover{transform:translateY(-2px) scale(1.03)}
+.btn.or{background:linear-gradient(135deg,var(--or),#ff5e3a);box-shadow:0 0 18px #FF8A2655}
+.btn.gh{background:#1c2547;box-shadow:none;color:var(--tx)}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+.cnt.on{outline:3px solid var(--or)}
+.lbl{text-align:center;font-weight:700;color:var(--mu);margin:18px 0 8px}
+.setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:20px 0}
+.setup label{display:block;border-inline-start:6px solid var(--c);padding:10px 12px;background:#0d1430;border-radius:10px;font-weight:700}
+.setup input{width:100%;margin-top:4px;background:transparent;border:0;border-bottom:2px solid #34407a;color:var(--tx);font-size:1.2rem;padding:4px 0;outline:0;direction:rtl}
+.score{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.team{flex:1;min-width:120px;background:var(--bg2);border:2px solid #2a3560;border-top:6px solid var(--c);border-radius:14px;padding:6px 12px;text-align:center;transition:.2s}
+.team.act{border-color:var(--c);box-shadow:0 0 22px var(--c);transform:translateY(-3px)}
+.team b{display:block;font-size:1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.team span{font-size:1.9rem;font-weight:900;color:var(--c)}
+.rnd{text-align:center;color:var(--mu);font-weight:700;margin-bottom:8px}
+.hero{text-align:center;padding:30px 10px}
+.hero .big{font-size:clamp(2.4rem,8vw,5rem);font-weight:900;color:var(--c);text-shadow:0 0 30px var(--c);line-height:1.4}
+.hero p{font-size:1.4rem;color:var(--mu);margin:8px 0 26px}
+.ttl{text-align:center;font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;color:var(--or);text-shadow:0 0 24px #FF8A2677;margin:6px 0}
+.ask{text-align:center;font-size:clamp(1.1rem,2.6vw,1.6rem);font-weight:700;margin:0 0 22px}
+.ask b{color:var(--c)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.cc{border:3px solid var(--c);border-radius:22px;padding:26px 10px;color:#fff;font-weight:900;font-size:clamp(1.3rem,2.6vw,1.9rem);cursor:pointer;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 55%,#0d1430),#0d1430);box-shadow:0 0 22px color-mix(in srgb,var(--c) 45%,transparent);transition:.18s}
+.cc i{display:block;font-style:normal;font-size:3.4em;margin-bottom:6px}
+.cc small{display:block;font-size:.7em;font-weight:700;color:var(--mu)}
+.cc:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 0 40px var(--c)}
+.lvl{border-color:var(--c)}
+.lvl .st{font-size:1.4rem;margin-top:6px}
+.qhead{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-weight:700;font-size:1.15rem;color:var(--mu)}
+.qhead b{color:var(--or)}
+.bar{height:12px;background:#0d1430;border-radius:8px;overflow:hidden;margin:14px 0}
+#bar{height:100%;width:100%;background:linear-gradient(90deg,var(--gr),var(--or),var(--rd));transition:width 1s linear}
+.q{font-size:clamp(1.5rem,4vw,2.7rem);font-weight:900;text-align:center;margin:20px 0 26px;line-height:1.6}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.opt{font-size:clamp(1.2rem,2.6vw,1.7rem);font-weight:700;text-align:start;color:var(--tx);background:#0d1430;border:2px solid #34407a;border-radius:14px;padding:16px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--pu);box-shadow:0 0 16px #8B5CF6aa}
+.opt.ok{background:#0f5a2c;border-color:var(--gr)}.opt.no{background:#6b1a1a;border-color:var(--rd)}
+.opt:disabled{cursor:default;color:var(--tx)}
+.res{text-align:center;margin-top:20px;font-size:1.5rem;font-weight:900}
+.pod{display:flex;gap:12px;justify-content:center;align-items:flex-end;margin:24px 0;flex-wrap:wrap}
+.pod>div{background:var(--bg2);border-top:6px solid var(--c);border-radius:12px 12px 0 0;padding:14px 18px;text-align:center;min-width:120px;font-weight:700}
+.pod .w{animation:pulse 1.2s infinite;box-shadow:0 0 30px var(--c)}
+@keyframes pulse{50%{transform:scale(1.06)}}
+</style></head><body><div id="app"></div>
+<script>
+const COL=['#8B5CF6','#3B82F6','#FF8A26','#22C55E','#EC4899','#EAB308'];
+const L=['أ','ب','ج','د'];
+// بنك الأسئلة: لكل فئة ثلاثة مستويات، وفي كل مستوى سؤالان
+const CATS=[
+{n:'العلوم',i:'🔬',c:'#8B5CF6',q:[
+ [['ما الكوكب المعروف باسم الكوكب الأحمر؟',['الزهرة','المريخ','المشتري','عطارد'],1],['كم عدد كواكب المجموعة الشمسية؟',['٧','٨','٩','١٠'],1]],
+ [['ما الغاز الذي تأخذه النباتات من الهواء لصنع غذائها؟',['الأكسجين','النيتروجين','ثاني أكسيد الكربون','الهيليوم'],2],['ما اسم العملية التي يتحول بها الماء السائل إلى بخار؟',['التكثف','التبخر','التجمد','الذوبان'],1]],
+ [['ما أخف عنصر في الجدول الدوري؟',['الهيدروجين','الهيليوم','الليثيوم','الأكسجين'],0],['كم عدد عظام جسم الإنسان البالغ تقريباً؟',['٢٠٦','١٠٦','٣٠٦','٤٠٦'],0]]]},
+{n:'الجغرافيا',i:'🌍',c:'#3B82F6',q:[
+ [['ما أكبر محيط في العالم؟',['الأطلسي','الهندي','المتجمد الشمالي','الهادئ'],3],['ما أطول نهر في قارة أفريقيا؟',['النيل','الكونغو','النيجر','الزامبيزي'],0]],
+ [['ما عاصمة أستراليا؟',['سيدني','كانبرا','ملبورن','بيرث'],1],['ما عاصمة اليابان؟',['سول','بكين','طوكيو','بانكوك'],2]],
+ [['في أي دولة يقع جبل كليمنجارو؟',['كينيا','أوغندا','تنزانيا','إثيوبيا'],2],['ما أصغر دولة في العالم مساحةً؟',['موناكو','الفاتيكان','سان مارينو','مالطا'],1]]]},
+{n:'التاريخ',i:'🏛️',c:'#FF8A26',q:[
+ [['من بنى أهرامات الجيزة؟',['الرومان','المصريون القدماء','الإغريق','الفرس'],1],['أي حضارة بنت الكولوسيوم؟',['الرومانية','الفرعونية','الفارسية','الفينيقية'],0]],
+ [['في أي عام انتهت الحرب العالمية الثانية؟',['١٩١٨','١٩٣٩','١٩٤٥','١٩٦٣'],2],['من الملك الذي عُثر على مقبرته كاملة عام ١٩٢٢؟',['رمسيس الثاني','توت عنخ آمون','خوفو','أخناتون'],1]],
+ [['من هو أول إمبراطور لروما؟',['يوليوس قيصر','نيرون','أغسطس','كاليجولا'],2],['من القائد الذي عبر جبال الألب بالفيلة؟',['هانيبعل','الإسكندر','نابليون','صلاح الدين'],0]]]},
+{n:'التقنية',i:'💻',c:'#22C55E',q:[
+ [['ما الجهاز الذي نكتب به على الحاسوب؟',['لوحة المفاتيح','الشاشة','السماعة','الطابعة'],0],['ما الجهاز الذي نحرك به المؤشر على الشاشة؟',['الفأرة','السماعة','الكاميرا','الشاشة'],0]],
+ [['ما الرقمان المستخدمان في النظام الثنائي؟',['صفر وواحد','واحد واثنان','صفر وتسعة','واحد وعشرة'],0],['ما الجزء الذي يُسمى عقل الحاسوب؟',['الشاشة','المعالج','الفأرة','السماعة'],1]],
+ [['أي وحدة تخزين من هذه هي الأكبر؟',['كيلوبايت','ميجابايت','جيجابايت','تيرابايت'],3],['كم بايتاً في الكيلوبايت الواحد؟',['١٠٠','١٠٢٤','١٠٠٠٠','٥١٢'],1]]]},
+{n:'الطبيعة',i:'🐘',c:'#EC4899',q:[
+ [['ما أكبر حيوان بري؟',['وحيد القرن','الزرافة','فرس النهر','الفيل الأفريقي'],3],['أي حيوان يُلقب بملك الغابة؟',['النمر','الأسد','الذئب','الدب'],1]],
+ [['كم عدد أرجل العنكبوت؟',['٦','٨','١٠','١٢'],1],['ما أسرع حيوان بري في العالم؟',['الفهد','الحصان','الأسد','الغزال'],0]],
+ [['ما الثديي الوحيد القادر على الطيران الحقيقي؟',['السنجاب الطائر','الخفاش','الزاحف الشراعي','الليمور'],1],['ما أكبر حيوان على وجه الأرض؟',['الفيل','الحوت الأزرق','القرش الأبيض','الزرافة'],1]]]}
+];
+const MORE=[
+[[['ما الجسم الذي يضيء سماء النهار؟',['القمر','الشمس','المريخ','النجوم'],1],['كم عدد حواس الإنسان الأساسية؟',['٣','٤','٥','٦'],2],['ما حالة الماء عند تجمّده؟',['غاز','سائل','بلازما','صلب'],3],['ما العضو الذي نتنفس به؟',['الرئتان','الكبد','الكلى','المعدة'],0]],
+[['ما أكبر كوكب في المجموعة الشمسية؟',['زحل','المشتري','نبتون','الأرض'],1],['ما الجزء من النبات الذي يمتص الماء من التربة؟',['الأوراق','الأزهار','الجذور','الثمار'],2],['ما وحدة قياس القوة؟',['الواط','الفولت','المتر','النيوتن'],3],['ما الغاز الذي نحتاجه في التنفس؟',['الأكسجين','النيتروجين','الهيدروجين','الميثان'],0]],
+[['ما الغاز الأكثر وجوداً في هواء الأرض؟',['الأكسجين','النيتروجين','ثاني أكسيد الكربون','الأرجون'],1],['ما أصغر وحدة بناء في الكائن الحي؟',['النسيج','العضو','الخلية','الجهاز'],2],['من صاحب نظرية النسبية؟',['نيوتن','جاليليو','داروين','أينشتاين'],3],['ما درجة غليان الماء بالدرجات المئوية؟',['١٠٠','٥٠','٨٠','١٢٠'],0]]],
+[[['في أي قارة تقع مصر؟',['آسيا','أفريقيا','أوروبا','أستراليا'],1],['ما عاصمة مصر؟',['الإسكندرية','الجيزة','القاهرة','أسوان'],2],['ما أكبر قارة في العالم؟',['أفريقيا','أوروبا','أمريكا الجنوبية','آسيا'],3],['أي بحر يقع شمال مصر؟',['المتوسط','الأحمر','الأسود','العربي'],0]],
+[['ما عاصمة فرنسا؟',['لندن','باريس','مدريد','روما'],1],['ما أكبر دولة في العالم مساحةً؟',['الصين','كندا','روسيا','البرازيل'],2],['ما أعلى جبل في العالم؟',['كليمنجارو','الألب','فوجي','إيفرست'],3],['في أي دولة يقع برج إيفل؟',['فرنسا','إيطاليا','إسبانيا','ألمانيا'],0]],
+[['ما عاصمة كندا؟',['تورونتو','أوتاوا','فانكوفر','مونتريال'],1],['أي قناة تربط البحر المتوسط بالبحر الأحمر؟',['قناة بنما','مضيق هرمز','قناة السويس','مضيق جبل طارق'],2],['ما أكبر صحراء حارة في العالم؟',['صحراء جوبي','الربع الخالي','كالاهاري','الصحراء الكبرى'],3],['ما عاصمة كينيا؟',['نيروبي','أكرا','لاغوس','الخرطوم'],0]]],
+[[['ما اسم الكتابة المصرية القديمة؟',['المسمارية','الهيروغليفية','اللاتينية','الصينية'],1],['على أي نهر قامت الحضارة المصرية القديمة؟',['الفرات','دجلة','النيل','الأمازون'],2],['ما اسم التمثال ذي رأس الإنسان وجسم الأسد في الجيزة؟',['رمسيس','الكرنك','الملوية','أبو الهول'],3],['في أي مدينة تقع معابد الكرنك؟',['الأقصر','أسوان','الإسكندرية','المنيا'],0]],
+[['من الملكة التي عاصرت يوليوس قيصر؟',['نفرتيتي','كليوباترا','حتشبسوت','إيزيس'],1],['من بنى الهرم الأكبر في الجيزة؟',['خفرع','منكاورع','خوفو','زوسر'],2],['من القائد الذي انتصر في معركة حطين؟',['قطز','بيبرس','عمرو بن العاص','صلاح الدين الأيوبي'],3],['في أي عام قامت ثورة يوليو في مصر؟',['١٩٥٢','١٩٤٨','١٩٦٧','١٩٧٣'],0]],
+[['من القائد الذي انتصر في معركة عين جالوت؟',['بيبرس','قطز','صلاح الدين','محمد علي'],1],['من الذي فتح مصر في عهد الخليفة عمر بن الخطاب؟',['خالد بن الوليد','طارق بن زياد','عمرو بن العاص','سعد بن أبي وقاص'],2],['في أي عام افتُتحت قناة السويس للملاحة؟',['١٨٠٥','١٩٠٠','١٩٥٦','١٨٦٩'],3],['من مؤسس مصر الحديثة الذي تولى الحكم عام ١٨٠٥؟',['محمد علي','إسماعيل','فؤاد','سعيد'],0]]],
+[[['ما الجهاز الذي نرى عليه الصور في الحاسوب؟',['الطابعة','الشاشة','الميكروفون','الفأرة'],1],['ما الجهاز الذي نطبع به على الورق؟',['الماسح الضوئي','الشاشة','الطابعة','السماعة'],2],['ما الجهاز الذي نسمع منه الصوت؟',['الفأرة','الكاميرا','الماسح الضوئي','السماعة'],3],['ما الجهاز الذي ينقل الإنترنت لاسلكياً في البيت؟',['الراوتر','الطابعة','السماعة','لوحة المفاتيح'],0]],
+[['ما اسم محرك البحث الأشهر في العالم؟',['فيسبوك','جوجل','يوتيوب','واتساب'],1],['ما الذي يحمي الحاسوب من الفيروسات؟',['الطابعة','الشاشة','برنامج مكافحة الفيروسات','الفأرة'],2],['أين تُحفظ الملفات بشكل دائم في الحاسوب؟',['الشاشة','المعالج','الفأرة','القرص الصلب'],3],['ما اسم الشبكة التي تربط الحواسيب حول العالم؟',['الإنترنت','الراديو','التلفاز','الهاتف الأرضي'],0]],
+[['كم عدد البتات في البايت الواحد؟',['٤','٨','١٦','٣٢'],1],['ما اسم الذاكرة المؤقتة السريعة في الحاسوب؟',['القرص الصلب','المعالج','الذاكرة العشوائية','البطاقة'],2],['أي شركة صنعت نظام التشغيل ويندوز؟',['آبل','جوجل','سامسونج','مايكروسوفت'],3],['ما البرنامج الذي يدير الحاسوب ويشغّله؟',['نظام التشغيل','المتصفح','الطابعة','المحرر'],0]]],
+[[['أي حيوان يعيش في الماء ويتنفس بالخياشيم؟',['القطة','السمكة','الحصان','العصفور'],1],['أي حيوان يُلقب بسفينة الصحراء؟',['الحصان','الحمار','الجمل','الفيل'],2],['من أي حشرة نحصل على العسل؟',['النمل','الذباب','البعوض','النحل'],3],['ما الطائر الذي لا يطير ويعيش في القطب الجنوبي؟',['البطريق','النسر','الصقر','الحمام'],0]],
+[['ما أكبر طائر في العالم؟',['النسر','النعامة','البجعة','الطاووس'],1],['أي حيوان يغيّر لونه ليختبئ؟',['الأسد','الذئب','الحرباء','الدب'],2],['ما اسم صغير الضفدعة؟',['الجرو','المهر','الحمل','الشرغوف'],3],['كم عدد قلوب الأخطبوط؟',['١','٢','٣','٤'],2]],
+[['ما أطول حيوان في العالم؟',['الفيل','الزرافة','الحوت','النعامة'],1],['ما الثديي الذي يضع البيض؟',['الخفاش','خلد الماء','الدلفين','الفيل'],1],['ما الكائنات التي تنتج معظم أكسجين المحيطات؟',['الأسماك','الحيتان','العوالق النباتية','المرجان'],2],['ما أسرع طائر في العالم عند الانقضاض؟',['النسر','الحمام','الصقر الشاهين','البومة'],2]]]
+];
+MORE.forEach((c,ci)=>c.forEach((lv,di)=>CATS[ci].q[di].push(...lv)));
+const PTS=[100,200,300],LV=['سهل','متوسط','صعب'],LC=['#22C55E','#3B82F6','#FF8A26'];
+const N=x=>Number(x).toLocaleString('ar-EG');
+let S={screen:'setup',n:3,rounds:3,names:[1,2,3,4,5,6].map(i=>'الفريق '+N(i)),teams:[],usedQ:{},turn:0,count:0,cat:0,diff:0,q:null,done:false,sel:-1,time:20,tm:null};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let ac;function beep(f,d,t){try{ac=ac||new AudioContext();const o=ac.createOscillator(),g=ac.createGain();o.type=t||'square';o.frequency.value=f;g.gain.value=.06;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+const win=()=>[523,659,784,1047].forEach((f,i)=>setTimeout(()=>beep(f,.18),i*120));
+const lose=()=>[220,160].forEach((f,i)=>setTimeout(()=>beep(f,.3,'sawtooth'),i*200));
+function sc(){return `<div class="score">${S.teams.map((t,i)=>`<div class="team ${i===S.turn?'act':''}" style="--c:${t.c}"><b>${esc(t.name)}</b><span>${N(t.s)}</span></div>`).join('')}</div>`}
+function render(){
+ const a=$('app'),t=S.teams[S.turn];
+ if(S.screen==='setup'){
+  a.innerHTML=`<div class="scr"><div class="logo">⚔️ حرب الفصول</div><p class="sub">كل فريق يختار تحدّيه بنفسه، والمعرفة تنتصر! المعلم هو الذي يدير اللعبة.</p>
+  <div class="card"><h2 style="text-align:center">كم عدد الفرق؟</h2><div class="row" style="margin-top:14px">${[2,3,4,5,6].map(n=>`<button class="btn gh cnt ${n===S.n?'on':''}" onclick="S.n=${n};render()">${N(n)}</button>`).join('')}</div>
+  <div class="lbl">كم سؤالاً يجيب كل فريق؟</div><div class="row">${[2,3,4,5].map(n=>`<button class="btn gh cnt ${n===S.rounds?'on':''}" onclick="S.rounds=${n};render()">${N(n)}</button>`).join('')}</div>
+  <div class="setup">${Array.from({length:S.n},(_,i)=>`<label style="--c:${COL[i]}">اسم الفريق ${N(i+1)}<input maxlength="18" value="${esc(S.names[i])}" oninput="S.names[${i}]=this.value"></label>`).join('')}</div>
+  <div class="row"><button class="btn or" onclick="start()">▶ ابدأ المعركة</button></div></div></div>`;
+ }else if(S.screen==='welcome'){
+  a.innerHTML=`${sc()}<div class="scr card hero" style="--c:${t.c}"><div class="rnd">السؤال ${N(Math.floor(S.count/S.teams.length)+1)} من ${N(S.rounds)} لكل فريق</div>
+  <p>أهلاً بكم في ساحة المعركة</p><div class="big">فريق ${esc(t.name)}</div><p>جاء دوركم! استعدوا للتحدي 🔥</p>
+  <button class="btn or" style="font-size:1.5rem;padding:14px 40px" onclick="go('cat')">هيا نختار التحدي ◀</button></div>`;
+ }else if(S.screen==='cat'){
+  a.innerHTML=`${sc()}<div class="scr" style="--c:${t.c}"><div class="ttl">حان وقت اختيار التحدي!</div>
+  <p class="ask">يا فريق <b>${esc(t.name)}</b>، اختاروا المجال اللي عاوزين تتنافسوا فيه</p>
+  <div class="cats">${CATS.map((c,i)=>`<button class="cc" style="--c:${c.c}" onclick="pickCat(${i})"><i>${c.i}</i>${c.n}<small>اضغطوا للاختيار</small></button>`).join('')}</div></div>`;
+ }else if(S.screen==='diff'){
+  const c=CATS[S.cat];
+  a.innerHTML=`${sc()}<div class="scr" style="--c:${t.c}"><div class="ttl">${c.i} اخترتم ${c.n}</div>
+  <p class="ask">الآن اختاروا مستوى الصعوبة يا فريق <b>${esc(t.name)}</b></p>
+  <div class="cats">${LV.map((l,i)=>`<button class="cc lvl" style="--c:${LC[i]}" onclick="pickDiff(${i})"><i>${['🌱','⚡','🔥'][i]}</i>${l}<div class="st">${N(PTS[i])} نقطة</div><div class="st">${'⭐'.repeat(i+1)}</div></button>`).join('')}</div>
+  <div class="row" style="margin-top:20px"><button class="btn gh" onclick="go('cat')">▶ رجوع لتغيير المجال</button></div></div>`;
+ }else if(S.screen==='q'){
+  const c=CATS[S.cat],q=S.q,pts=PTS[S.diff],at=S.teams[S.act];let res='';
+  if(S.phase==='pick'){
+   res=`<div class="res" style="color:var(--rd)">${S.timeout?'⏰ انتهى الوقت!':'❌ إجابة خاطئة!'} هل يريد فريق آخر أن يجرّب؟ (الإجابة الصحيحة مخفية)<div class="row" style="margin-top:12px">${S.teams.map((x,i)=>S.tried.includes(i)?'':`<button class="btn" style="background:${x.c}" onclick="steal(${i})">${esc(x.name)}</button>`).join('')}<button class="btn gh" onclick="reveal()">لا أحد، اعرضوا الإجابة</button></div></div>`;
+  }else if(S.phase==='reveal'){
+   res=S.winner>=0?`<div class="res" style="color:var(--gr)">✅ إجابة صحيحة! ${esc(S.teams[S.winner].name)} يكسب ${N(pts)} نقطة</div>`:`<div class="res" style="color:var(--or)">لم يجب أحد إجابة صحيحة. الإجابة الصحيحة باللون الأخضر 👆</div>`;
+   res+=`<div class="row" style="margin-top:14px"><button class="btn or" onclick="next()">التالي ◀</button></div>`;
+  }
+  a.innerHTML=`${sc()}<div class="scr card"><div class="qhead"><span>${c.i} ${c.n} · ${LV[S.diff]} · <b>${N(pts)} نقطة</b></span><span>الفريق: <b style="color:${at.c}">${esc(at.name)}</b></span><span id="tm">${S.done?'':'⏱ '+N(S.time)}</span></div>
+  <div class="bar"><div id="bar" style="width:${S.done?0:S.time/20*100}%"></div></div>
+  <div class="q">${esc(q[0])}</div>
+  <div class="opts">${q[1].map((o,i)=>`<button class="opt ${S.phase==='reveal'&&i===q[2]?'ok':''} ${S.wrong.includes(i)?'no':''}" ${S.done||S.wrong.includes(i)?'disabled':''} onclick="answer(${i})">${L[i]}. ${esc(o)}</button>`).join('')}</div>${res}</div>`;
+ }else{
+  const r=[...S.teams].sort((a,b)=>b.s-a.s);
+  a.innerHTML=`<div class="scr"><div class="logo">🏆 النصر</div><p class="sub">${r[0].s===r[1].s?'تعادل في الصدارة!':'الفريق الفائز بحرب الفصول: '+esc(r[0].name)+' 🎉'}</p>
+  <div class="pod">${r.map((t,i)=>`<div class="${i===0?'w':''}" style="--c:${t.c};min-height:${140-i*14}px"><div style="font-size:2rem">${['🥇','🥈','🥉'][i]||'🎖️'}</div>${esc(t.name)}<br><span style="font-size:2rem;font-weight:900;color:${t.c}">${N(t.s)}</span><div style="font-size:.9rem;color:var(--mu)">نقطة</div></div>`).join('')}</div>
+  <div class="row"><button class="btn or" onclick="start()">↻ العب مرة أخرى</button><button class="btn gh" onclick="go('setup')">فرق جديدة</button></div></div>`;
+  win();
+ }
+}
+function go(s){S.screen=s;render()}
+function start(){S.teams=Array.from({length:S.n},(_,i)=>({name:(S.names[i]||'').trim()||'الفريق '+N(i+1),c:COL[i],s:0}));S.turn=0;S.count=0;go('welcome')}
+function pickCat(i){S.cat=i;go('diff')}
+function pickDiff(d){
+ S.diff=d;const k=S.cat+'-'+d,bank=CATS[S.cat].q[d];
+ let used=S.usedQ[k]||(S.usedQ[k]=[]);
+ let pool=bank.map((_,i)=>i).filter(i=>!used.includes(i));
+ if(!pool.length){used.length=0;pool=bank.map((_,i)=>i)}
+ const i=pool[Math.floor(Math.random()*pool.length)];used.push(i);
+ S.q=bank[i];S.wrong=[];S.tried=[];S.winner=-1;S.timeout=false;S.act=S.turn;S.screen='q';startT()}
+function startT(){S.phase='play';S.done=false;S.time=20;render();clearInterval(S.tm);S.tm=setInterval(()=>{S.time--;const e=$('tm');if(e)e.textContent='⏱ '+N(S.time);const b=$('bar');if(b)b.style.width=S.time/20*100+'%';if(S.time<=5&&S.time>0)beep(880,.05);if(S.time<=0)answer(-1)},1000)}
+function answer(i){if(S.done)return;clearInterval(S.tm);S.done=true;if(i===S.q[2]){S.teams[S.act].s+=PTS[S.diff];S.winner=S.act;S.phase='reveal';win()}else{lose();S.timeout=i<0;if(i>=0)S.wrong.push(i);S.tried.push(S.act);S.phase=S.tried.length>=S.teams.length?'reveal':'pick'}render()}
+function reveal(){S.phase='reveal';S.done=true;render()}
+function steal(i){S.act=i;startT()}
+function next(){clearInterval(S.tm);S.count++;if(S.count>=S.teams.length*S.rounds)return go('end');S.turn=(S.turn+1)%S.teams.length;go('welcome')}
+render();
+</script></body></html>
